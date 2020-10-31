@@ -43,4 +43,24 @@ public class MainActivity extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);  // This setups up a new request queue which we will need to make HTTP requests.
     }
+
+    private void clearRepoList() {
+        // This will clear the repo list (set it as a blank string).
+        this.tvRepoList.setText("");
+    }
+
+    private void addToRepoList(String repoName, String lastUpdated) {
+        // This will add a new repo to our list.
+        // It combines the repoName and lastUpdated strings together.
+        // And then adds them followed by a new line (\n\n make two new lines).
+        String strRow = repoName + " / " + lastUpdated;
+        String currentText = tvRepoList.getText().toString();
+        this.tvRepoList.setText(currentText + "\n\n" + strRow);
+    }
+
+    private void setRepoListText(String str) {
+        // This is used for setting the text of our repo list box to a specific string.
+        // We will use this to write a "No repos found" message if the user doens't have any.
+        this.tvRepoList.setText(str);
+    }
 }
